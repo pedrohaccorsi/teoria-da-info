@@ -7,6 +7,7 @@ import com.unisinos.files.FileHandler;
 import com.unisinos.menus.Menu;
 
 import java.io.File;
+import java.util.List;
 
 public class EncoderEngine implements Engine {
 
@@ -29,10 +30,10 @@ public class EncoderEngine implements Engine {
         System.out.println("ok lets do it");
 
         if( 1 == 2 ){
-            File[] availableFiles = getAvailableFiles();
-            File targetFile       = getFileFromList(availableFiles);
-            Encoder encoder       = getEncoder();
-            File encodedFile      = encode(targetFile, encoder);
+            List<File> availableFiles = getAvailableFiles();
+            File targetFile           = getFileFromList(availableFiles);
+            Encoder encoder           = getEncoder();
+            File encodedFile          = encode(targetFile, encoder);
 
             saveFile(encodedFile);
         }
@@ -40,7 +41,7 @@ public class EncoderEngine implements Engine {
     }
 
     private void saveFile(File file){
-        //fileHandler.save(file, OUTPUT_PATH);
+        fileHandler.save(file, OUTPUT_PATH);
     }
 
     private File encode(File targetFile, Encoder encoder){
@@ -51,14 +52,12 @@ public class EncoderEngine implements Engine {
         return EncoderFactory.create(menu.determineEncoder());
     }
 
-    private File[] getAvailableFiles(){
-        //return fileHandler.getFilesFromDir(OUTPUT_PATH);
-        return null;
+    private List<File> getAvailableFiles(){
+        return fileHandler.getFilesFromDir(OUTPUT_PATH);
     }
 
-    private File getFileFromList(File[] fileList){
-        //return fileHandler.getFileFromList(fileList);
-        return null;
+    private File getFileFromList(List<File> fileList){
+        return fileHandler.getFileFromList(fileList);
     }
 
 }
