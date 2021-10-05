@@ -1,5 +1,5 @@
-.idea
-.iml
-out/*
-out
-output
+*.idea
+*.iml
+*out/*
+*out
+*output
