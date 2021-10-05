@@ -1,4 +1,4 @@
-package com.unisinos.ecc;
+package main.java.com.unisinos.ecc;
 
 public class Crc8 implements Ecc {
     @Override

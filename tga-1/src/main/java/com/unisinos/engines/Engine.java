@@ -1,4 +1,4 @@
-package com.unisinos.engines;
+package main.java.com.unisinos.engines;
 
 public interface Engine {
 

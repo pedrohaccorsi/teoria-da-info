@@ -1,10 +1,10 @@
-package com.unisinos.engines;
+package main.java.com.unisinos.engines;
 
-import com.unisinos.encoders.Encoder;
-import com.unisinos.encoders.EncoderFactory;
-import com.unisinos.files.DefaultFileHandler;
-import com.unisinos.files.FileHandler;
-import com.unisinos.menus.Menu;
+import main.java.com.unisinos.encoders.Encoder;
+import main.java.com.unisinos.encoders.EncoderFactory;
+import main.java.com.unisinos.files.DefaultFileHandler;
+import main.java.com.unisinos.files.FileHandler;
+import main.java.com.unisinos.menus.Menu;
 
 import java.io.File;
 import java.util.List;
@@ -45,7 +45,8 @@ public class EncoderEngine implements Engine {
     }
 
     private File encode(File targetFile, Encoder encoder){
-        return encoder.encode(targetFile);
+        String encoded = encoder.encode(1);
+        return null;
     }
 
     private Encoder getEncoder(){

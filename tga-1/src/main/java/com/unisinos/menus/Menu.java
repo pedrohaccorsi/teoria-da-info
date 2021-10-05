@@ -1,7 +1,7 @@
-package com.unisinos.menus;
+package main.java.com.unisinos.menus;
 
-import com.unisinos.enums.EncodersEnum;
-import com.unisinos.enums.EnginesEnum;
+import main.java.com.unisinos.enums.EncodersEnum;
+import main.java.com.unisinos.enums.EnginesEnum;
 
 import java.util.Scanner;
 

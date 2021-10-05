@@ -1,6 +1,6 @@
-package com.unisinos.encoders;
+package main.java.com.unisinos.encoders;
 
-import com.unisinos.enums.EncodersEnum;
+import main.java.com.unisinos.enums.EncodersEnum;
 
 public class EncoderFactory {
 
