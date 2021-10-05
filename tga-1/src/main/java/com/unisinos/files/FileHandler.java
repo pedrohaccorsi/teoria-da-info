@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface FileHandler {
 
-    File getFileFromDirectory(String targetDirectory);
-    void save(File file, String directory);
+    File getFileFromDirectory(String targetDirectory, String extension);
+    void createAndWriteToFile(String filename, String filePath, byte[] buffer) throws IOException;
+    void createAndWriteToFile(String filename, String filePath, String buffer) throws IOException;
     String getAsText(File inputFile) throws IOException;
+    byte[] getAsByteArray(File inputFile) throws IOException;
 }

@@ -1,5 +1,6 @@
 package com.unisinos.encoders;
 
+import com.unisinos.encoders.implementations.GolombEncoder;
 import com.unisinos.enums.EncodersEnum;
 
 public class EncoderFactory {
