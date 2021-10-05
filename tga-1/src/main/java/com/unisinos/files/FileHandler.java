@@ -1,11 +1,12 @@
 package com.unisinos.files;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public interface FileHandler {
 
-    List<File> getFilesFromDir(String directory);
-    File getFileFromList(List<File> files);
+    File getFileFromDirectory(String targetDirectory);
     void save(File file, String directory);
+    String getAsText(File inputFile) throws IOException;
 }

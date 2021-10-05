@@ -6,7 +6,7 @@ import com.unisinos.files.DefaultFileHandler;
 import com.unisinos.files.FileHandler;
 import com.unisinos.menus.Menu;
 import java.io.File;
-import java.util.List;
+import java.io.IOException;
 
 public class EncoderEngine implements Engine {
 
@@ -26,17 +26,28 @@ public class EncoderEngine implements Engine {
     @Override
     public void run(){
 
-        System.out.println("ok lets do it");
+        Encoder encoder       = determineEncoder();
+        File fileToBeEncoded  = determineFile();
+        String fileAsText     = getFileAsText(fileToBeEncoded);
 
-        if( 1 == 2 ){
-            List<File> availableFiles = getAvailableFiles();
-            File targetFile           = getFileFromList(availableFiles);
-            Encoder encoder           = getEncoder();
-            File encodedFile          = encode(targetFile, encoder);
+        /*
+        NEXT: send the content of fileAsText to encoder.encode(),
+        char by char, probably converted into their ASCII values.
+        */
 
-            saveFile(encodedFile);
+    }
+
+    private String getFileAsText(File fileToBeEncoded) {
+        try {
+            return fileHandler.getAsText(fileToBeEncoded);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return "";
+    }
 
+    private File determineFile() {
+        return fileHandler.getFileFromDirectory("/src/main/resources");
     }
 
     private void saveFile(File file){
@@ -48,16 +59,9 @@ public class EncoderEngine implements Engine {
         return null;
     }
 
-    private Encoder getEncoder(){
+    private Encoder determineEncoder(){
         return EncoderFactory.create(menu.determineEncoder());
     }
 
-    private List<File> getAvailableFiles(){
-        return fileHandler.getFilesFromDir(OUTPUT_PATH);
-    }
-
-    private File getFileFromList(List<File> fileList){
-        return fileHandler.getFileFromList(fileList);
-    }
 
 }
