@@ -1,8 +1,8 @@
-package main.java.com.unisinos.engines;
+package com.unisinos.engines;
 
-import main.java.com.unisinos.files.FileHandler;
-import main.java.com.unisinos.menus.Menu;
-import main.java.com.unisinos.files.DefaultFileHandler;
+import com.unisinos.files.FileHandler;
+import com.unisinos.menus.Menu;
+import com.unisinos.files.DefaultFileHandler;
 
 public class DecoderEngine implements Engine {
 

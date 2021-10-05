@@ -1,4 +1,4 @@
-package main.java.com.unisinos.files;
+package com.unisinos.files;
 
 import java.io.File;
 import java.util.List;

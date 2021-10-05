@@ -1,11 +1,10 @@
-package main.java.com.unisinos.engines;
+package com.unisinos.engines;
 
-import main.java.com.unisinos.encoders.Encoder;
-import main.java.com.unisinos.encoders.EncoderFactory;
-import main.java.com.unisinos.files.DefaultFileHandler;
-import main.java.com.unisinos.files.FileHandler;
-import main.java.com.unisinos.menus.Menu;
-
+import com.unisinos.encoders.Encoder;
+import com.unisinos.encoders.EncoderFactory;
+import com.unisinos.files.DefaultFileHandler;
+import com.unisinos.files.FileHandler;
+import com.unisinos.menus.Menu;
 import java.io.File;
 import java.util.List;
 

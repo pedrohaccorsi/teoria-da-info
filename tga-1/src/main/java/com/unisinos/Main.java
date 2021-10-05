@@ -1,7 +1,7 @@
-package main.java.com.unisinos;
+package com.unisinos;
 
-import main.java.com.unisinos.menus.Menu;
-import main.java.com.unisinos.engines.EngineFactory;
+import com.unisinos.menus.Menu;
+import com.unisinos.engines.EngineFactory;
 
 public class Main {
 

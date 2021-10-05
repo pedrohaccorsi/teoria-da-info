@@ -1,4 +1,4 @@
-package main.java.com.unisinos.enums;
+package com.unisinos.enums;
 
 public enum EncodersEnum {
     GOLOMB,

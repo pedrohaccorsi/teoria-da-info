@@ -1,9 +1,10 @@
-package main.java.com.unisinos.menus;
+package com.unisinos.menus;
 
-import main.java.com.unisinos.enums.EncodersEnum;
-import main.java.com.unisinos.enums.EnginesEnum;
+import com.unisinos.enums.EncodersEnum;
+import com.unisinos.enums.EnginesEnum;
 
 import java.util.Scanner;
+
 
 public class Menu {
 
