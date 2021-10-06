@@ -1,11 +1,13 @@
 package com.unisinos.files;
 
 import java.io.File;
-import java.util.List;
+import java.io.IOException;
 
 public interface FileHandler {
 
-    List<File> getFilesFromDir(String directory);
-    File getFileFromList(List<File> files);
-    void save(File file, String directory);
+    File getFileFromDirectory(String targetDirectory, String extension);
+    void createAndWriteToFile(String filename, String filePath, byte[] buffer) throws IOException;
+    void createAndWriteToFile(String filename, String filePath, String buffer) throws IOException;
+    String getAsText(File inputFile) throws IOException;
+    byte[] getAsByteArray(File inputFile) throws IOException;
 }
