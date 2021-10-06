@@ -41,7 +41,8 @@ public class GolombEncoder implements Encoder {
         return suffixBinary;
     }
 
-    private String decode(String textToDecode) {
+    @Override
+    public String decode(String textToDecode) {
 
         StringBuilder decoded = new StringBuilder();
 

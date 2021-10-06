@@ -29,6 +29,7 @@ public class DecoderEngine implements Engine {
         byte[] fileAsBytes         = getFileAsBytes(fileToBeEncoded);
         String decodedFile         = encoder.decode(fileAsBytes);
 
+
         try{
             fileHandler.createAndWriteToFile(
                     fileToBeEncoded.getName().replace(".cod", ".dec"),

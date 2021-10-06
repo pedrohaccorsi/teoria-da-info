@@ -5,5 +5,6 @@ public interface Encoder {
     public int getDivider();
     public String encode(int numberToEncode);
     public String decode(byte[] textToDecode);
+    public String decode(String textToDecode);
 
 }
