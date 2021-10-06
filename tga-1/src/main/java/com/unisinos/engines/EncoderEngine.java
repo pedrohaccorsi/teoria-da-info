@@ -40,25 +40,33 @@ public class EncoderEngine implements Engine {
             fileAsBytes = getFileAsBytes(fileToBeEncoded);
         }
 
-        saveEncodedFile(fileToBeEncoded, fileAsBytes);
+        String fileName = saveEncodedFile(fileToBeEncoded, fileAsBytes);
+        System.out.println("The encoded file "+fileName+ " is at /tga-1/encodedFiles");
 
     }
 
-    private void saveEncodedFile(File fileToBeEncoded, byte[] asciiListAsByteArray) {
+    private String saveEncodedFile(File fileToBeEncoded, byte[] asciiListAsByteArray) {
+
+        String filename = fileToBeEncoded.getName().contains(".")
+                ? fileToBeEncoded.getName().replace(".txt", ".cod")
+                : fileToBeEncoded.getName() + ".cod";
+
+        String filePath = fileToBeEncoded
+                .getAbsolutePath()
+                .substring(0, (fileToBeEncoded.getAbsolutePath().length() - fileToBeEncoded.getName().length()))
+                .replace("base", "encoded");
+
         try{
             fileHandler.createAndWriteToFile(
-                    fileToBeEncoded.getName().contains(".")
-                        ? fileToBeEncoded.getName().replace(".txt", ".cod")
-                        : fileToBeEncoded.getName() + ".cod",
-                    fileToBeEncoded.getAbsolutePath().substring(
-                            0,
-                            (fileToBeEncoded.getAbsolutePath().length() - fileToBeEncoded.getName().length())
-                    ),
+                    filename,
+                    filePath,
                     asciiListAsByteArray
             );
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return filename;
     }
 
     private byte[] convertASCIIListToByteArray(List<String> encodedASCII) {
@@ -116,7 +124,7 @@ public class EncoderEngine implements Engine {
     }
 
     private File determineFile() {
-        return fileHandler.getFileFromDirectory("/src/main/resources", ".txt", true);
+        return fileHandler.getFileFromDirectory("/tga-1/baseFiles", ".txt", true);
     }
 
     private Encoder determineEncoder(){

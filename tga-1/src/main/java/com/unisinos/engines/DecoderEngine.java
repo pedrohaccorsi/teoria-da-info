@@ -29,25 +29,36 @@ public class DecoderEngine implements Engine {
         byte[] fileAsBytes   = getFileAsBytes(fileToBeEncoded);
         String decodedFile   = encoder.decode(fileAsBytes);
 
-        saveDecodedFile(fileToBeEncoded, decodedFile);
+
+        String fileName = saveDecodedFile(fileToBeEncoded, decodedFile);
+
+        System.out.println("The decoded file "+fileName+ " is at /tga-1/decodedFiles");
 
     }
 
-    private void saveDecodedFile(File fileToBeEncoded, String decodedFile) {
+    private String saveDecodedFile(File fileToBeEncoded, String decodedFile) {
+
+        String fileName = fileToBeEncoded.getName().contains(".")
+                ? fileToBeEncoded.getName().replace(".cod", ".dec")
+                : fileToBeEncoded.getName() + ".dec";
+
+        String filePath = fileToBeEncoded
+                .getAbsolutePath()
+                .substring(0, (fileToBeEncoded.getAbsolutePath().length() - fileToBeEncoded.getName().length()))
+                .replace("encoded", "decoded");
+
         try{
             fileHandler.createAndWriteToFile(
-                    fileToBeEncoded.getName().contains(".")
-                            ? fileToBeEncoded.getName().replace(".cod", ".dec")
-                            : fileToBeEncoded.getName() + ".dec",
-                    fileToBeEncoded.getAbsolutePath().substring(
-                            0,
-                            (fileToBeEncoded.getAbsolutePath().length() - fileToBeEncoded.getName().length())
-                    ),
+                    fileName,
+                    filePath,
                     decodedFile
             );
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return fileName;
+
     }
 
     private List<Integer> convertAllCharsToASCII(String fileAsText) {
@@ -77,7 +88,7 @@ public class DecoderEngine implements Engine {
     }
 
     private File determineFile() {
-        return fileHandler.getFileFromDirectory("/src/main/resources", ".cod", true);
+        return fileHandler.getFileFromDirectory("/tga-1/encodedFiles", ".cod", true);
     }
 
     private Encoder determineEncoder(){
