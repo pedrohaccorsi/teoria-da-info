@@ -108,7 +108,7 @@ public class EncoderEngine implements Engine {
     }
 
     private File determineFile() {
-        return fileHandler.getFileFromDirectory("/tga-1/src/main/resources", ".txt");
+        return fileHandler.getFileFromDirectory("/src/main/resources", ".txt");
     }
 
     private Encoder determineEncoder(){

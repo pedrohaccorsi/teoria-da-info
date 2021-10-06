@@ -72,7 +72,7 @@ public class DecoderEngine implements Engine {
     }
 
     private File determineFile() {
-        return fileHandler.getFileFromDirectory("/tga-1/src/main/resources", ".cod");
+        return fileHandler.getFileFromDirectory("/src/main/resources", ".cod");
     }
 
     private Encoder determineEncoder(){

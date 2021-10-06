@@ -3,7 +3,6 @@ package com.unisinos.encoders.implementations;
 import com.unisinos.encoders.Encoder;
 import com.unisinos.utils.StringUtils;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FibonacciEncoder implements Encoder {
@@ -71,7 +70,6 @@ public class FibonacciEncoder implements Encoder {
         StringBuilder stringBuilder = new StringBuilder();
         while (textToDecode.contains("11")) {
             String codeword = getCodeword(textToDecode);
-            System.out.println(codeword.length());
             textToDecode = textToDecode.substring(codeword.length() + 1);
             stringBuilder.append((char) decodeWord(codeword));
         }
