@@ -40,7 +40,9 @@ public class EncoderEngine implements Engine {
     private void saveEncodedFile(File fileToBeEncoded, byte[] asciiListAsByteArray) {
         try{
             fileHandler.createAndWriteToFile(
-                    fileToBeEncoded.getName().replace(".txt", ".cod"),
+                    fileToBeEncoded.getName().contains(".")
+                        ? fileToBeEncoded.getName().replace(".txt", ".cod")
+                        : fileToBeEncoded.getName() + ".cod",
                     fileToBeEncoded.getAbsolutePath().substring(
                             0,
                             (fileToBeEncoded.getAbsolutePath().length() - fileToBeEncoded.getName().length())
@@ -112,7 +114,7 @@ public class EncoderEngine implements Engine {
     }
 
     private File determineFile() {
-        return fileHandler.getFileFromDirectory("/tga-1/src/main/resources", ".txt");
+        return fileHandler.getFileFromDirectory("/src/main/resources", ".txt", true);
     }
 
     private Encoder determineEncoder(){

@@ -17,12 +17,11 @@ public class DefaultFileHandler implements FileHandler {
     }
 
     @Override
-    public File getFileFromDirectory(String targetDirectoryName, String extension){
+    public File getFileFromDirectory(String targetDirectoryName, String extension, boolean allowFilesWithoutExtension){
 
-        System.out.println(rootDirectory.getAbsolutePath() );
         File targetFolder = (new File(rootDirectory.getAbsolutePath() + targetDirectoryName));
 
-        List<String> files = getFilesListFromDirectory(targetFolder, extension);
+        List<String> files = getFilesListFromDirectory(targetFolder, extension, allowFilesWithoutExtension);
 
         int choice = getChoice(files);
 
@@ -63,10 +62,15 @@ public class DefaultFileHandler implements FileHandler {
         return choice;
     }
 
-    private List<String> getFilesListFromDirectory(File targetDirectory, String extension) {
+    private List<String> getFilesListFromDirectory(File targetDirectory, String extension, boolean allowFilesWithoutExtension) {
         return Arrays.asList(targetDirectory.list())
                 .stream()
-                .filter((String s) -> {return s.endsWith(extension) ;})
+                .filter((String s) -> {
+                    return allowFilesWithoutExtension
+                            ? s.endsWith(extension) || !s.contains(".")
+                            : s.endsWith(extension);
+                    }
+                )
                 .collect(Collectors.toList());
     }
 
