@@ -26,14 +26,21 @@ public class EncoderEngine implements Engine {
     @Override
     public void run(){
 
-        Encoder encoder             = determineEncoder();
-        File fileToBeEncoded        = determineFile();
-        String fileAsText           = getFileAsText(fileToBeEncoded);
-        List<Integer> charsAsASCII  = convertAllCharsToASCII(fileAsText);
-        List<String> encodedASCII   = encodeASCIIchars(charsAsASCII, encoder);
-        byte[] asciiListAsByteArray = convertASCIIListToByteArray(encodedASCII);
+        Encoder encoder      = determineEncoder();
+        File fileToBeEncoded = determineFile();
+        byte[] fileAsBytes;
 
-        saveEncodedFile(fileToBeEncoded, asciiListAsByteArray);
+        try{
+            String fileAsText           = getFileAsText(fileToBeEncoded);
+            List<Integer> charsAsASCII  = convertAllCharsToASCII(fileAsText);
+            List<String> encodedASCII   = encodeASCIIchars(charsAsASCII, encoder);
+            fileAsBytes                 = convertASCIIListToByteArray(encodedASCII);
+        }
+        catch(IOException e){
+            fileAsBytes = getFileAsBytes(fileToBeEncoded);
+        }
+
+        saveEncodedFile(fileToBeEncoded, fileAsBytes);
 
     }
 
@@ -104,13 +111,8 @@ public class EncoderEngine implements Engine {
         return null;
     }
 
-    private String getFileAsText(File fileToBeEncoded) {
-        try {
-            return fileHandler.getAsText(fileToBeEncoded);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "";
+    private String getFileAsText(File fileToBeEncoded) throws IOException{
+        return fileHandler.getAsText(fileToBeEncoded);
     }
 
     private File determineFile() {

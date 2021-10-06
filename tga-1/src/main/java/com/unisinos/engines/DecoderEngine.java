@@ -36,7 +36,9 @@ public class DecoderEngine implements Engine {
     private void saveDecodedFile(File fileToBeEncoded, String decodedFile) {
         try{
             fileHandler.createAndWriteToFile(
-                    fileToBeEncoded.getName().replace(".cod", ".dec"),
+                    fileToBeEncoded.getName().contains(".")
+                            ? fileToBeEncoded.getName().replace(".cod", ".dec")
+                            : fileToBeEncoded.getName() + ".dec",
                     fileToBeEncoded.getAbsolutePath().substring(
                             0,
                             (fileToBeEncoded.getAbsolutePath().length() - fileToBeEncoded.getName().length())
@@ -75,7 +77,7 @@ public class DecoderEngine implements Engine {
     }
 
     private File determineFile() {
-        return fileHandler.getFileFromDirectory("/src/main/resources", ".cod", false);
+        return fileHandler.getFileFromDirectory("/src/main/resources", ".cod", true);
     }
 
     private Encoder determineEncoder(){
