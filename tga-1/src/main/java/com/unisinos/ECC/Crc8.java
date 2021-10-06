@@ -1,6 +1,5 @@
 package com.unisinos.ECC;
 
-
 public class Crc8 implements Ecc {
     private static final boolean[] G = {true, false, false, false, false, false, true, true, true}; // 0x107
 
@@ -27,7 +26,7 @@ public class Crc8 implements Ecc {
     }
 
     @Override
-    public boolean checksum(byte[] buffer) {
-        return false;
+    public boolean checksum(byte[] buffer, byte check) {
+        return this.generateEcc(buffer)[0] == check;
     }
 }
