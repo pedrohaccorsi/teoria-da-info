@@ -85,7 +85,7 @@ public class Hamming implements Ecc {
         byte checkOut = (byte) (((hammingParityBits[0]?1:0) << 2) + ((hammingParityBits[1]?1:0) << 1) + (hammingParityBits[2]?1:0));
 
         if(checkOut != 0) {
-            System.out.println("Erro na verificação do codeword Hamming: bit " + checkOut + " inconsistente. ");
+            System.out.println("Error while verifying Hamming codeword: bit " + checkOut + " inconsistent. Fixing... ");
             buffer[0] ^= 1 << (checkOut - 1);
         }
 
