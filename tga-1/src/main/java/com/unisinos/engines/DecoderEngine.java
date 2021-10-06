@@ -24,12 +24,16 @@ public class DecoderEngine implements Engine {
     @Override
     public void run(){
 
-        Encoder encoder            = determineEncoder();
-        File fileToBeEncoded       = determineFile();
-        byte[] fileAsBytes         = getFileAsBytes(fileToBeEncoded);
-        String decodedFile         = encoder.decode(fileAsBytes);
+        Encoder encoder      = determineEncoder();
+        File fileToBeEncoded = determineFile();
+        byte[] fileAsBytes   = getFileAsBytes(fileToBeEncoded);
+        String decodedFile   = encoder.decode(fileAsBytes);
 
+        saveDecodedFile(fileToBeEncoded, decodedFile);
 
+    }
+
+    private void saveDecodedFile(File fileToBeEncoded, String decodedFile) {
         try{
             fileHandler.createAndWriteToFile(
                     fileToBeEncoded.getName().replace(".cod", ".dec"),
@@ -42,7 +46,6 @@ public class DecoderEngine implements Engine {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     private List<Integer> convertAllCharsToASCII(String fileAsText) {
@@ -72,7 +75,7 @@ public class DecoderEngine implements Engine {
     }
 
     private File determineFile() {
-        return fileHandler.getFileFromDirectory("/src/main/resources", ".cod");
+        return fileHandler.getFileFromDirectory("/tga-1//src/main/resources", ".cod");
     }
 
     private Encoder determineEncoder(){

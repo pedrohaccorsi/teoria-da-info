@@ -33,6 +33,11 @@ public class EncoderEngine implements Engine {
         List<String> encodedASCII   = encodeASCIIchars(charsAsASCII, encoder);
         byte[] asciiListAsByteArray = convertASCIIListToByteArray(encodedASCII);
 
+        saveEncodedFile(fileToBeEncoded, asciiListAsByteArray);
+
+    }
+
+    private void saveEncodedFile(File fileToBeEncoded, byte[] asciiListAsByteArray) {
         try{
             fileHandler.createAndWriteToFile(
                     fileToBeEncoded.getName().replace(".txt", ".cod"),
@@ -45,7 +50,6 @@ public class EncoderEngine implements Engine {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     private byte[] convertASCIIListToByteArray(List<String> encodedASCII) {
@@ -108,7 +112,7 @@ public class EncoderEngine implements Engine {
     }
 
     private File determineFile() {
-        return fileHandler.getFileFromDirectory("/src/main/resources", ".txt");
+        return fileHandler.getFileFromDirectory("/tga-1/src/main/resources", ".txt");
     }
 
     private Encoder determineEncoder(){
