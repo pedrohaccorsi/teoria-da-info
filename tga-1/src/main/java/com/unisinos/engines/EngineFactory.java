@@ -9,6 +9,8 @@ public class EngineFactory {
         return switch (engineType) {
             case ENCODE -> new EncoderEngine();
             case DECODE -> new DecoderEngine();
+            case ECCENCODE -> new ECCEncoderEngine();
+            case ECCDECODE -> new ECCDecoderEngine();
         };
 
     }
