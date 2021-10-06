@@ -71,7 +71,10 @@ public class EncoderEngine implements Engine {
 
     private byte[] convertASCIIListToByteArray(List<String> encodedASCII) {
 
-        String joinedString = encodedASCII.stream().reduce(String::concat).get();
+        String joinedString = encodedASCII
+                .stream()
+                .reduce(String::concat)
+                .get();
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 
         String[] str = joinedString.split("(?<=\\G.{8})");
