@@ -71,12 +71,7 @@ public class DecoderEngine implements Engine {
     }
 
     private File determineFile() {
-        return fileHandler.getFileFromDirectory("/src/main/resources", ".cod");
-    }
-
-    private File encode(File targetFile, Encoder encoder){
-        String encoded = encoder.encode(1);
-        return null;
+        return fileHandler.getFileFromDirectory("/tga-1/src/main/resources", ".cod");
     }
 
     private Encoder determineEncoder(){

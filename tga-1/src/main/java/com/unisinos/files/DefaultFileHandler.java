@@ -19,6 +19,7 @@ public class DefaultFileHandler implements FileHandler {
     @Override
     public File getFileFromDirectory(String targetDirectoryName, String extension){
 
+        System.out.println(rootDirectory.getAbsolutePath() );
         File targetFolder = (new File(rootDirectory.getAbsolutePath() + targetDirectoryName));
 
         List<String> files = getFilesListFromDirectory(targetFolder, extension);

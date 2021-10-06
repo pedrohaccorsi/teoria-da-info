@@ -5,6 +5,7 @@ import com.unisinos.encoders.EncoderFactory;
 import com.unisinos.files.DefaultFileHandler;
 import com.unisinos.files.FileHandler;
 import com.unisinos.menus.Menu;
+import com.unisinos.utils.StringUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -25,11 +26,11 @@ public class EncoderEngine implements Engine {
     @Override
     public void run(){
 
-        Encoder encoder            = determineEncoder();
-        File fileToBeEncoded       = determineFile();
-        String fileAsText          = getFileAsText(fileToBeEncoded);
-        List<Integer> charsAsASCII = convertAllCharsToASCII(fileAsText);
-        List<String> encodedASCII  = encodeASCIIchars(charsAsASCII, encoder);
+        Encoder encoder             = determineEncoder();
+        File fileToBeEncoded        = determineFile();
+        String fileAsText           = getFileAsText(fileToBeEncoded);
+        List<Integer> charsAsASCII  = convertAllCharsToASCII(fileAsText);
+        List<String> encodedASCII   = encodeASCIIchars(charsAsASCII, encoder);
         byte[] asciiListAsByteArray = convertASCIIListToByteArray(encodedASCII);
 
         try{
@@ -68,10 +69,16 @@ public class EncoderEngine implements Engine {
     }
 
     private List<String> encodeASCIIchars(List<Integer> charsAsASCII, Encoder encoder) {
-        return  charsAsASCII
+
+        List<String> encodedASCIIchars =  charsAsASCII
                 .stream()
                 .map(encoder::encode)
                 .collect(Collectors.toList());
+
+        encodedASCIIchars.add(0,StringUtils.getByteFromNumber(encoder.getCode()   ));
+        encodedASCIIchars.add(1,StringUtils.getByteFromNumber(encoder.getDivider()));
+
+        return encodedASCIIchars;
     }
 
     private List<Integer> convertAllCharsToASCII(String fileAsText) {
@@ -101,17 +108,11 @@ public class EncoderEngine implements Engine {
     }
 
     private File determineFile() {
-        return fileHandler.getFileFromDirectory("/src/main/resources", ".txt");
-    }
-
-    private File encode(File targetFile, Encoder encoder){
-        String encoded = encoder.encode(1);
-        return null;
+        return fileHandler.getFileFromDirectory("/tga-1/src/main/resources", ".txt");
     }
 
     private Encoder determineEncoder(){
         return EncoderFactory.create(menu.determineEncoder());
     }
-
 
 }
