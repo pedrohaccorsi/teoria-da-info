@@ -65,6 +65,7 @@ public class EliasGammaEncoder implements Encoder {
         decoded += new String(Character.toChars(binaryPart + (int) Math.pow(2, unaryPart)));
 
         return decodeText(text.substring(unaryPart*2 + 1), decoded);
+
     }
 
 }

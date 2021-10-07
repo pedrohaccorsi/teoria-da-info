@@ -17,7 +17,13 @@ Baixe o arquivo [teoria-da-info.jar](https://github.com/pedrohaccorsi/teoria-da-
   | ----- alice29.txt
 ```
 
-Feito isso, execute o `.jar` e siga os passos mostrados no terminal. Nele, será pedido qual tipo de operação tu quer fazer:
+Feito isso, execute o seguinte comando:
+
+```
+java -Xss256M -jar teoria-da-info.jar
+```
+
+Agora siga os passos mostrados no terminal. Nele, será pedido qual tipo de operação tu quer fazer:
 
 1. Encode
 2. Ecc encode
