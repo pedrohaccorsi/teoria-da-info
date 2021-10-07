@@ -1,5 +1,9 @@
 package com.unisinos.engines;
 
+import com.unisinos.engines.implementations.DecoderEngine;
+import com.unisinos.engines.implementations.ECCDecoderEngine;
+import com.unisinos.engines.implementations.ECCEncoderEngine;
+import com.unisinos.engines.implementations.EncoderEngine;
 import com.unisinos.enums.EnginesEnum;
 
 public class EngineFactory {

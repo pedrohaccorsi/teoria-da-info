@@ -31,6 +31,10 @@ public class DefaultFileHandler implements FileHandler {
 
     @Override
     public void createAndWriteToFile(String fileName, String filePath, byte[] buffer) throws IOException {
+        File f = new File(filePath);
+        if(!f.exists()){
+            f.mkdirs();
+        }
         try (FileOutputStream fos = new FileOutputStream(new File(filePath + fileName), false)) {
             fos.write(buffer);
         }
@@ -39,6 +43,10 @@ public class DefaultFileHandler implements FileHandler {
 
     @Override
     public void createAndWriteToFile(String filename, String filePath, String buffer) throws IOException {
+        File f = new File(filePath);
+        if(!f.exists()){
+            f.mkdirs();
+        }
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File(filePath + filename)))) {
             writer.write(buffer);
         }

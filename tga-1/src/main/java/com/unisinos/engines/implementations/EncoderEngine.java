@@ -1,7 +1,8 @@
-package com.unisinos.engines;
+package com.unisinos.engines.implementations;
 
 import com.unisinos.encoders.Encoder;
 import com.unisinos.encoders.EncoderFactory;
+import com.unisinos.engines.Engine;
 import com.unisinos.files.DefaultFileHandler;
 import com.unisinos.files.FileHandler;
 import com.unisinos.menus.Menu;

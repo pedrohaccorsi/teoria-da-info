@@ -1,7 +1,8 @@
-package com.unisinos.engines;
+package com.unisinos.engines.implementations;
 
 import com.unisinos.ECC.Crc8;
 import com.unisinos.ECC.Hamming;
+import com.unisinos.engines.Engine;
 import com.unisinos.files.DefaultFileHandler;
 import com.unisinos.files.FileHandler;
 
@@ -59,24 +60,34 @@ public class ECCEncoderEngine implements Engine {
 
         for(int i = 0 ; i < converted.length ; i++) byteConverted[i] = (byte) converted[i];
 
-        this.saveEncodedFile(fileToEncode, byteConverted);
+        String fileName = this.saveEncodedFile(fileToEncode, byteConverted);
+
+        System.out.println("The ecc-encoded file "+fileName+ " is at /tga-1/eccEncodedFiles");
+
     }
 
-    private void saveEncodedFile(File fileToBeEncoded, byte[] byteArray) {
+    private String saveEncodedFile(File fileToBeEncoded, byte[] byteArray) {
+
+        String filename = fileToBeEncoded.getName().contains(".")
+                ? fileToBeEncoded.getName().replace(".cod", ".ecc")
+                : fileToBeEncoded.getName() + ".ecc";
+
+        String filePath = fileToBeEncoded
+                .getAbsolutePath()
+                .substring(0, (fileToBeEncoded.getAbsolutePath().length() - fileToBeEncoded.getName().length()))
+                .replace("encoded", "eccEncoded");
+
         try{
             fileHandler.createAndWriteToFile(
-                    fileToBeEncoded.getName().contains(".")
-                        ? fileToBeEncoded.getName().replace(".cod", ".ecc")
-                        : fileToBeEncoded.getName() + ".ecc",
-                    fileToBeEncoded.getAbsolutePath().substring(
-                            0,
-                            (fileToBeEncoded.getAbsolutePath().length() - fileToBeEncoded.getName().length())
-                    ),
+                    filename,
+                    filePath,
                     byteArray
             );
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return filename;
     }
 
     private byte[] getFileAsBytes(File fileToBeEncoded) {
@@ -89,6 +100,6 @@ public class ECCEncoderEngine implements Engine {
     }
 
     private File determineFile() {
-        return fileHandler.getFileFromDirectory("/tga-1/src/main/resources", ".cod", false);
+        return fileHandler.getFileFromDirectory("/tga-1/encodedFiles", ".cod", false);
     }
 }
