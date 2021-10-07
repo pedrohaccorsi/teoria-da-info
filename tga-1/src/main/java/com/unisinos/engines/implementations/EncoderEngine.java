@@ -42,7 +42,7 @@ public class EncoderEngine implements Engine {
         }
 
         String fileName = saveEncodedFile(fileToBeEncoded, fileAsBytes);
-        System.out.println("The encoded file "+fileName+ " is at /tga-1/encodedFiles");
+        System.out.println("The encoded file "+fileName+ " was created!");
 
     }
 

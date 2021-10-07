@@ -68,7 +68,7 @@ public class ECCDecoderEngine implements Engine {
         for(int i = 0 ; i < converted.length ; i++) byteConverted[i] = (byte) converted[i];
 
         String fileName = this.saveDecodedFile(fileToDecode, byteConverted);
-        System.out.println("The ecc-decoded file "+fileName+ " is at /tga-1/encodedFiles");
+        System.out.println("The ecc-decoded file "+fileName+ " was created!");
 
     }
 

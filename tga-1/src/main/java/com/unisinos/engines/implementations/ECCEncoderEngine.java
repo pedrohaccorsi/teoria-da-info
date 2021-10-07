@@ -62,7 +62,7 @@ public class ECCEncoderEngine implements Engine {
 
         String fileName = this.saveEncodedFile(fileToEncode, byteConverted);
 
-        System.out.println("The ecc-encoded file "+fileName+ " is at /tga-1/eccEncodedFiles");
+        System.out.println("The ecc-encoded file "+fileName+ " was created!");
 
     }
 

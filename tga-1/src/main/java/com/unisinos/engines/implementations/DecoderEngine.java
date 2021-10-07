@@ -33,7 +33,7 @@ public class DecoderEngine implements Engine {
 
         String fileName = saveDecodedFile(fileToBeEncoded, decodedFile);
 
-        System.out.println("The decoded file "+fileName+ " is at /tga-1/decodedFiles");
+        System.out.println("The decoded file "+fileName+ " was created!");
 
     }
 
