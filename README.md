@@ -9,18 +9,18 @@ Trabalho desenvolvido para a cadeira de Teoria da Informação da Universidade U
 
 ## Instruções de execução 
 
-Baixe o arquivo [teoria-da-info.jar](https://github.com/pedrohaccorsi/teoria-da-info/raw/main/download/teoria-da-info.jar) e ponha ele no mesmo diretório que os arquivos a serem codificados e/ou decodificados, como no exemplo abaixo:
+Baixe o arquivo [teoria-da-info-ga.jar](https://github.com/pedrohaccorsi/teoria-da-info/raw/main/download/teoria-da-info-ga.jar) e ponha ele no mesmo diretório que os arquivos a serem codificados e/ou decodificados, como no exemplo abaixo:
 
 ```
  -|grupo-pedro-mateus-joao-felipe
-  | ----- teoria-da-info.jar 
+  | ----- teoria-da-info-ga.jar 
   | ----- alice29.txt
 ```
 
 Feito isso, execute o seguinte comando:
 
 ```
-java -Xss256M -jar teoria-da-info.jar
+java -Xss256M -jar teoria-da-info-ga.jar
 ```
 
 Agora siga os passos mostrados no terminal. Nele, será pedido qual tipo de operação tu quer fazer:
