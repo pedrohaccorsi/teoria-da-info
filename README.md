@@ -2,6 +2,11 @@
 
 Trabalho desenvolvido para a cadeira de Teoria da Informação da Universidade Unisinos.
 
+## Requisitos de sistema
+
+- Java 16
+- SDK 16
+
 ## Instruções de execução 
 
 Baixe o arquivo [teoria-da-info.jar](https://github.com/pedrohaccorsi/teoria-da-info/raw/main/download/teoria-da-info.jar) e ponha ele no mesmo diretório que os arquivos a serem codificados e/ou decodificados, como no exemplo abaixo:
