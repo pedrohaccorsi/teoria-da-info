@@ -19,7 +19,7 @@ public class DefaultFileHandler implements FileHandler {
     @Override
     public File getFileFromDirectory(String targetDirectoryName, String extension, boolean allowFilesWithoutExtension){
 
-        File targetFolder = (new File(rootDirectory.getAbsolutePath() + targetDirectoryName));
+        File targetFolder = (new File(rootDirectory.getAbsolutePath())); //+ targetDirectoryName));
 
         List<String> files = getFilesListFromDirectory(targetFolder, extension, allowFilesWithoutExtension);
 
